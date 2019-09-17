@@ -1,0 +1,196 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Sep 17, 2019 at 03:53 PM
+-- Server version: 5.7.26
+-- PHP Version: 7.3.8
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `db_soal`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_admin`
+--
+
+CREATE TABLE `tbl_admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `nama` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_admin`
+--
+
+INSERT INTO `tbl_admin` (`id`, `username`, `password`, `nama`) VALUES
+(1, 'admin', 'mlimaadmin12345', 'admin mlima');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_jawaban`
+--
+
+CREATE TABLE `tbl_jawaban` (
+  `id` int(11) NOT NULL,
+  `id_soal` int(11) NOT NULL,
+  `nis_siswa` int(11) NOT NULL,
+  `jawaban` varchar(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_jawaban`
+--
+
+INSERT INTO `tbl_jawaban` (`id`, `id_soal`, `nis_siswa`, `jawaban`) VALUES
+(27, 24, 12341, 'd'),
+(28, 25, 12341, 'd'),
+(29, 26, 12341, 'c'),
+(30, 24, 12345, 'c'),
+(31, 25, 12345, 'b'),
+(32, 26, 12345, 'a'),
+(33, 24, 12342, 'c'),
+(34, 25, 12342, 'd'),
+(35, 26, 12342, 'c');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_pembahasan`
+--
+
+CREATE TABLE `tbl_pembahasan` (
+  `id` int(11) NOT NULL,
+  `id_soal` int(11) NOT NULL,
+  `pembahasan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_pembahasan`
+--
+
+INSERT INTO `tbl_pembahasan` (`id`, `id_soal`, `pembahasan`) VALUES
+(3, 24, 'ini pembahasan yang baru'),
+(4, 25, 'ini pembahasan yang baru'),
+(5, 26, 'pembahasan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_siswa`
+--
+
+CREATE TABLE `tbl_siswa` (
+  `nis` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `kelas` varchar(128) NOT NULL,
+  `asal_sekolah` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_siswa`
+--
+
+INSERT INTO `tbl_siswa` (`nis`, `nama`, `kelas`, `asal_sekolah`, `password`) VALUES
+(12341, 'azian', 'X', 'sma', 'test'),
+(12342, 'ezy', 'XI', 'sma', 'test'),
+(12344, 'test', 'XI', 'sma aja', 'test'),
+(12345, 'testsatu', 'XII', 'sma', 'test');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_soal`
+--
+
+CREATE TABLE `tbl_soal` (
+  `id` int(11) NOT NULL,
+  `soal` text NOT NULL,
+  `jawaban_a` text NOT NULL,
+  `jawaban_b` text NOT NULL,
+  `jawaban_c` text NOT NULL,
+  `jawaban_d` text NOT NULL,
+  `jawaban_e` text NOT NULL,
+  `jawaban_yang_benar` varchar(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_soal`
+--
+
+INSERT INTO `tbl_soal` (`id`, `soal`, `jawaban_a`, `jawaban_b`, `jawaban_c`, `jawaban_d`, `jawaban_e`, `jawaban_yang_benar`) VALUES
+(24, 'ini soal lagi bukan yang tadi', 'iya lah', 'iya deh', 'iya', 'iya', 'iya', 'c'),
+(25, 'ini yang soal yang kemarin', 'apaan', 'iyaa', 'benarr', 'tidak', 'tidak lah', 'c'),
+(26, 'ini soal lagi yaa', 'iyaa', 'iyaa', 'ha ah', 'iyaa', 'tidak', 'b');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tbl_admin`
+--
+ALTER TABLE `tbl_admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_jawaban`
+--
+ALTER TABLE `tbl_jawaban`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_pembahasan`
+--
+ALTER TABLE `tbl_pembahasan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_siswa`
+--
+ALTER TABLE `tbl_siswa`
+  ADD PRIMARY KEY (`nis`);
+
+--
+-- Indexes for table `tbl_soal`
+--
+ALTER TABLE `tbl_soal`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_admin`
+--
+ALTER TABLE `tbl_admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_jawaban`
+--
+ALTER TABLE `tbl_jawaban`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `tbl_pembahasan`
+--
+ALTER TABLE `tbl_pembahasan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_soal`
+--
+ALTER TABLE `tbl_soal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
